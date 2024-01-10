@@ -7,7 +7,7 @@ locals {
   create = var.create
 
   template_is_file = length(var.template_path) > 0
-  template_body    = length(var.template_body) > 0 ? var.template_body : (template_is_file ? file(var.template_path) : null)
+  template_body    = length(var.template_body) > 0 ? var.template_body : (local.template_is_file ? file(var.template_path) : null)
 
   auto_deployment = merge(
     {
